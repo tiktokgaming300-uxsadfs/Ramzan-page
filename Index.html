@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramzan Calendar 2026</title>
+
+<style>
+body{
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#0b3d0b url('https://www.transparenttextures.com/patterns/arabesque.png');
+    color:white;
+    text-align:center;
+    border:8px solid #00ff00;
+    overflow-x:hidden;
+}
+.wrapper{
+    padding:15px;
+}
+h1{
+    font-size:32px;
+    font-weight:bold;
+    color:#00ff00;
+    text-shadow: 2px 2px 5px black;
+    margin-bottom:20px;
+}
+.moon{
+    width:70px;
+    height:70px;
+    background:white;
+    border-radius:50%;
+    margin:10px auto;
+    box-shadow:-15px 0 0 5px #0b3d0b inset,0 0 25px #00ff99;
+    animation:float 3s ease-in-out infinite;
+}
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+}
+#clock{
+    font-size:20px;
+    font-weight:bold;
+    background:rgba(0,0,0,0.5);
+    padding:10px 20px;
+    border-radius:12px;
+    display:inline-block;
+    margin-bottom:15px;
+}
+.kalma-box{
+    margin:10px auto 25px;
+    padding:15px;
+    border:2px solid #00ff99;
+    border-radius:12px;
+    background:rgba(0,0,0,0.6);
+    text-align:center;
+    direction:rtl;
+    line-height:30px;
+    font-size:22px;
+}
+.button-container{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    max-width:350px;
+    margin:0 auto 20px;
+}
+.button-container button{
+    padding:12px;
+    font-size:16px;
+    font-weight:bold;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#00ff00;
+    color:black;
+    transition:0.3s;
+}
+.button-container button:hover{
+    background:#00cc00;
+    color:white;
+}
+/* Tilawat Box */
+.tilawat-box{
+    margin:20px auto;
+    padding:15px;
+    max-width:350px;
+    border:2px solid #00ff00;
+    border-radius:12px;
+    background:rgba(0,0,0,0.6);
+    font-size:18px;
+}
+.tilawat-box button{
+    padding:10px 15px;
+    font-size:16px;
+    border-radius:8px;
+    border:none;
+    background:#00ff00;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+.tilawat-box button:hover{
+    background:#00cc00;
+    color:white;
+}
+footer{
+    position:fixed;
+    bottom:5px;
+    right:10px;
+    font-size:12px;
+    color:#00ff99;
+}
+.dark-mode{
+    background:black !important;
+    color:#00ff99 !important;
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+<div class="moon"></div>
+
+<h1>🌙 Ramzan Calendar 2026 🌙</h1>
+
+<!-- Live Time -->
+<div id="clock"></div>
+
+<!-- Arabic Qalma -->
+<div class="kalma-box">
+اللّٰهُمَّ صَلِّ عَلٰى مُحَمَّدٍ وَآلِهِ وَصَحْبِهِ
+</div>
+
+<!-- Buttons -->
+<div class="button-container">
+    <button onclick="window.open('https://shiacalender.netlify.app','_blank')">
+    Shia__Fiqa-e-Jafria (Chichawatni) Ramzan Calendar
+    </button>
+    <button onclick="window.open('https://sunicalender.netlify.app','_blank')">
+    Sunni (Chichawatni) Ramzan Calendar
+    </button>
+</div>
+
+<!-- Tilawat Box -->
+<div class="tilawat-box">
+    <p>Click below to listen Tilawat:</p>
+    <button onclick="playTilawat()">▶️ Start Tilawat</button>
+    <audio id="tilawatAudio" src="tilawat.mp3"></audio>
+</div>
+
+<footer>Developed by SD Bhai</footer>
+
+<script>
+// Live Time in 12-hour format without seconds
+function updateClock(){
+    const now=new Date();
+    let hours=now.getHours();
+    const minutes=now.getMinutes().toString().padStart(2,'0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    document.getElementById("clock").innerHTML=`Live Time: ${hours}:${minutes} ${ampm}`;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+// Tilawat function
+function playTilawat(){
+    const audio = document.getElementById('tilawatAudio');
+    audio.play();
+}
+</script>
+
+</body>
+</html>
